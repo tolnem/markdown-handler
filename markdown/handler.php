@@ -16,7 +16,7 @@ header('Content-type: text/html; charset=utf-8');
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="/markdown/style.css"/>
+    <link rel="stylesheet" type="text/css" href="<?= dirname($_SERVER['SCRIPT_NAME']) ?>/style.css"/>
     <meta name="content-type" http-equiv="content-type" value="text/html; utf-8"/>
   </head>
   <body>
