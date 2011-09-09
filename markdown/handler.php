@@ -1,27 +1,28 @@
 <?php
+$file = realpath($_SERVER['PATH_TRANSLATED']);
+if(!$file) {
+	echo "No filename";
+	exit;
+}
+$legalExtensions = array('md', 'markdown', 'mdown');
+if (!in_array(strtolower(substr($file, strrpos($file, '.') + 1)), $legalExtensions) || isset($_GET['raw'])) {
+	header('Content-type: text/plain; charset=utf-8');
+	readfile($file);
+	exit;
+}
+
 header('Content-type: text/html; charset=utf-8');
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-	<link rel="stylesheet" type="text/css" href="/markdown/style.css">
-	<meta name="content-type" http-equiv="content-type" value="text/html; utf-8">
-</head>
-<body>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/markdown/style.css"/>
+    <meta name="content-type" http-equiv="content-type" value="text/html; utf-8"/>
+  </head>
+  <body>
 <?php
-
-require('markdown.php');
-
-$legalExtensions = array('md', 'markdown');
-
-$file = realpath($_SERVER['PATH_TRANSLATED']);
-if($file
-	&& in_array(strtolower(substr($file,strrpos($file,'.')+1)), $legalExtensions)
-	&& substr($file,0,strlen($_SERVER['DOCUMENT_ROOT'])) == $_SERVER['DOCUMENT_ROOT']) {
-	echo Markdown(file_get_contents($file));
-} else {
-	echo "<p>Bad filename given</p>";
-}
+  require('markdown.php');
+  echo Markdown(file_get_contents($file));
 ?>
-</body>
+  </body>
 </html>
