@@ -18,6 +18,8 @@ header('Content-type: text/html; charset=utf-8');
   <head>
     <link rel="stylesheet" type="text/css" href="<?= dirname($_SERVER['SCRIPT_NAME']) ?>/style.css"/>
     <meta name="content-type" http-equiv="content-type" value="text/html; utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="<?= dirname($_SERVER['SCRIPT_NAME']) ?>/markdown.js"></script>
   </head>
   <body>
 <?php
