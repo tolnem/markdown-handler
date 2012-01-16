@@ -86,6 +86,9 @@ th, td {
     border: 1px solid #ccc;
 }
 
+#toc h2 {
+	cursor: pointer;
+}
 li.H3 {
     margin-left: 30px;
 }
